@@ -24,16 +24,17 @@ This framework is built on two fundamental components:
 - Deep Neural Network (DNN): A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
 
 <h2>Mathematical Formulation</h2>
-The model operates on trial-level neural data and label sequences. Given a sequence of latent states 
-𝑋
-𝑘
-X 
-k
-​
-  and observations 
-𝑌
-𝑘
-Y 
-k
-​
- , the evolution and observation equations are as follows:
+The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
+ - <b>Transition Equation: (SSM):</b>
+ - <b>Observation Equation:</b>
+ - <b>Classification Equation:</b>
+ The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
+
+<h2>Code Structure and Documentation</h2>
+The codebase is organized into the following modules:
+
+- data_processing.py: Handles data loading and preprocessing, including reading CSV files and preparing time-series neural data.
+- cnn1d_model.py: Defines a 1D CNN architecture that processes latent neural states for binary classification tasks.
+- particle_filter.py: Implements the particle filtering algorithm to estimate the latent states over time.
+- em_algorithm.py: Contains the Expectation-Maximization (EM) algorithm, which iteratively refines model parameters using E-step (particle filtering), M-step (parameter updates), and NN-step (DNN training).
+- ```utils.py:``` Utility functions for data handling, training, and visualizing neural dynamics.
