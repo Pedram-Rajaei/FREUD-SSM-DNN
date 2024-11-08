@@ -60,10 +60,23 @@ The DNN classifier is trained using updated particle-filtered states, refining t
 <h4>5. Convergence:</h4>
 This process repeats until the model achieves stable likelihood values, indicating convergence.
 
-<h2>Feature Importance via Integrated Gradients</h2>
+<h3>Feature Importance via Integrated Gradients</h3>
 The Integrated Gradients method evaluates feature importance by assessing the contribution of each input feature to the model’s output, providing insights into which neural components are critical for task prediction.
 
-<H2>Dataset and Experimentation</H2>
-The model was validated using the AJILE12 dataset of ECoG recordings from participants performing motor and rest tasks. A thorough evaluation was conducted using 10-fold cross-validation, yielding an F1 score of 0.75 ± 0.01, outperforming benchmark methods such as HTNet by 5%.
+<h2>Dataset and Experimentation</h2>
+The model was validated using the <b>AJILE12 dataset</b> of ECoG recordings from participants performing motor and rest tasks. A thorough evaluation was conducted using 10-fold cross-validation, yielding an F1 score of <b>0.75 ± 0.01</b>, outperforming benchmark methods such as HTNet by 5%.
 
 The optimal latent dimensionality for EEG data was identified as 15, maximizing the decoding performance and interpretability of the model’s manifold representation.
+
+<h2>Installation</h2>
+<h3>Prerequisites</h3>
+The project requires the following libraries:
+
+- ```torch```
+- ```numpy```
+- ```pandas```
+- ```scipy```
+- ```matplotlib```
+- ```seaborn```
+Install them via:
+```pip install torch numpy pandas scipy matplotlib seaborn```
