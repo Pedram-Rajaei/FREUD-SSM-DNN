@@ -26,6 +26,7 @@ This framework is built on two fundamental components:
 
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
+
  - <b>Transition Equation: (SSM):</b>
  - <b>Observation Equation:</b>
  - <b>Classification Equation:</b>
