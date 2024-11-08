@@ -60,4 +60,10 @@ The DNN classifier is trained using updated particle-filtered states, refining t
 <h4>5. Convergence:</h4>
 This process repeats until the model achieves stable likelihood values, indicating convergence.
 
+<h2>Feature Importance via Integrated Gradients</h2>
+The Integrated Gradients method evaluates feature importance by assessing the contribution of each input feature to the model’s output, providing insights into which neural components are critical for task prediction.
 
+<H2>Dataset and Experimentation</H2>
+The model was validated using the AJILE12 dataset of ECoG recordings from participants performing motor and rest tasks. A thorough evaluation was conducted using 10-fold cross-validation, yielding an F1 score of 0.75 ± 0.01, outperforming benchmark methods such as HTNet by 5%.
+
+The optimal latent dimensionality for EEG data was identified as 15, maximizing the decoding performance and interpretability of the model’s manifold representation.
