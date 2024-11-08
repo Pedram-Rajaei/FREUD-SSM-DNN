@@ -46,16 +46,18 @@ The codebase is organized into the following modules:
 The EM algorithm is essential to this research, iteratively estimating model parameters to maximize data likelihood under the SSM-DNN framework. The algorithm includes the following steps:
 
 <h4>1. Initialization:<h4></h4>
-- The latent state, noise covariances, and transition matrices are initialized.
+The latent state, noise covariances, and transition matrices are initialized.
 
 <h4>2. E-Step (Particle Filtering):</h4>
-- Latent states X<sub>k</sub> are inferred using a particle filter for each trial, leveraging the SSM dynamics. The particle filter iteratively updates particles based on neural data, generating state estimates that represent the underlying manifold structure.
+Latent states X<sub>k</sub> are inferred using a particle filter for each trial, leveraging the SSM dynamics. The particle filter iteratively updates particles based on neural data, generating state estimates that represent the underlying manifold structure.
 
 <h4>3. M-Step (Parameter Update):</h4>
-- Model parameters are updated using maximum likelihood estimation. Transition (A, B) and observation (C, D) matrices are optimized based on inferred states, while covariances <I>Q</I> and <I>R</I> are recalculated to account for process and observation noise.
+Model parameters are updated using maximum likelihood estimation. Transition (A, B) and observation (C, D) matrices are optimized based on inferred states, while covariances <I>Q</I> and <I>R</I> are recalculated to account for process and observation noise.
 
 <h4>4. NN-Step (DNN Training):</h4>
-- The DNN classifier is trained using updated particle-filtered states, refining the latent representation to improve label prediction.
+The DNN classifier is trained using updated particle-filtered states, refining the latent representation to improve label prediction.
 
 <h4>5. Convergence:</h4>
-- This process repeats until the model achieves stable likelihood values, indicating convergence.
+This process repeats until the model achieves stable likelihood values, indicating convergence.
+
+
