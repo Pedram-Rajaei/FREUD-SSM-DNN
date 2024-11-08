@@ -78,7 +78,19 @@ The project requires the following libraries:
 - ```scipy```
 - ```matplotlib```
 - ```seaborn```
-- <br>
+<br>
 Install them via:
 <br>
 ```python pip install torch numpy pandas scipy matplotlib seaborn```
+
+<h2>Running the Model</h2>
+<b>1. Data Preparation:</b> Store neural time-series data in the following directory structure on Google Drive:
+```Google Drive
+   └── My Drive
+       └── Behavior
+           ├── ctl   # Control condition data files
+           └── mdd   # Task-specific data files```
+<b>2. Model Training and EM Iteration:</b> Run the primary training script:
+<br>
+```python main.py```
+
