@@ -28,10 +28,11 @@ This framework is built on two fundamental components:
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
 
- - <b>Transition Equation: (SSM):</b>
+ - <b>Transition Equation: (SSM):</b> X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>, ϵ<sub>k</sub>), ϵ<sub>k</sub> ∼ N(0, R)
+
  - <b>Observation Equation:</b>
  - <b>Classification Equation:</b>
- </n>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
+   <br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
 
 <h2>Code Structure and Documentation</h2>
 The codebase is organized into the following modules:
