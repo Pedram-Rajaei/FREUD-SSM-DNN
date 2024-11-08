@@ -21,8 +21,9 @@ In neuroscience, the manifold hypothesis posits that complex, high-dimensional d
 
 <h2>Model Architecture</h2>
 This framework is built on two fundamental components:
-- State-Space Model (SSM): A generative model that governs the temporal evolution of the latent states X<sub>k</sub>, capturing dynamics in a reduced-dimensional space.
-- Deep Neural Network (DNN): A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
+
+-1. State-Space Model (SSM): A generative model that governs the temporal evolution of the latent states X<sub>k</sub>, capturing dynamics in a reduced-dimensional space.
+-2. Deep Neural Network (DNN): A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
 
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
@@ -101,8 +102,8 @@ This script loads data, trains the CNN classifier, and iteratively updates model
 
 The model significantly improved decoding accuracy and interpretability:
 
-- Classification Performance: The SSM-DNN model achieved an F1 score of 0.75 ± 0.01, indicating robust decoding accuracy.
-- Feature Relevance: Using Integrated Gradients, the model highlighted the role of the pre-central gyrus in task execution, aligning with known motor control areas in the cortex.
+- <b>Classification Performance:</b> The SSM-DNN model achieved an F1 score of 0.75 ± 0.01, indicating robust decoding accuracy.
+- <b>Feature Relevance:</b> Using Integrated Gradients, the model highlighted the role of the pre-central gyrus in task execution, aligning with known motor control areas in the cortex.
 
 These findings underscore the model’s utility in both decoding neural states and elucidating neural mechanisms underlying specific tasks.
 
