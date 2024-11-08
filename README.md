@@ -22,8 +22,8 @@ In neuroscience, the manifold hypothesis posits that complex, high-dimensional d
 <h2>Model Architecture</h2>
 This framework is built on two fundamental components:
 
-- State-Space Model (SSM): A generative model that governs the temporal evolution of the latent states X<sub>k</sub>, capturing dynamics in a reduced-dimensional space.
-- Deep Neural Network (DNN): A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
+- <b>State-Space Model (SSM):</b> A generative model that governs the temporal evolution of the latent states X<sub>k</sub>, capturing dynamics in a reduced-dimensional space.
+- <b>Deep Neural Network (DNN):</b> A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
 
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
