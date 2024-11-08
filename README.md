@@ -28,11 +28,11 @@ This framework is built on two fundamental components:
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
 
- - <b>Transition Equation: (SSM):</b> <div align="center">X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>,     ϵ<sub>k</sub>), ϵ<sub>k</sub> ∼ N(0, R)</div>
+ - <b>Transition Equation: (SSM):</b> <div align="center"><b><i>X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>,     ϵ<sub>k</sub>), ϵ<sub>k</sub> ∼ N(0, R)</i></b></div>
 <br>Here, <b><i>f<sub>ψ</sub></i></b> captures the temporal evolution of the latent states with process noise <b><i>ϵ<sub>k</sub></i></b> governed by covariance <b><i>R</i></b>.
- - <b>Observation Equation:</b> <div align="center">Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>),     v<sub>k</sub> ∼ N(0, Q)</div>
+ - <b>Observation Equation:</b> <div align="center"><b><i>Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>),     v<sub>k</sub> ∼ N(0, Q)</i></b></div>
 <br>The mapping <b><i>g<sub>ϕ</sub></i></b> relates the latent states to neural observations <b><i>Y<sub>k</sub></i></b>, with observational noise and covariance <b><i>Q</i></b>.
- - <b>Classification Equation:</b> <div align="center">l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</div>
+ - <b>Classification Equation:</b> <div align="center"><b><i>l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</i></b></div>
 <br>The DNN, represented by <b><i>h<sub>ϕ</sub></i></b>, processes the latent state trajectory <b><i>X<sub>0:K</sub></i></b> to predict the label <b><i>l</i></b> associated with the task or condition.
    <br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
 
