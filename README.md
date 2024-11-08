@@ -42,7 +42,7 @@ The codebase is organized into the following modules:
 - ```utils.py:``` Utility functions for data handling, training, and visualizing neural dynamics.
 
 <h2>Methodology</h2>
-<h3></h3>EM Algorithm and Training Procedure</
+<h3>EM Algorithm and Training Procedure</h3>
 The EM algorithm is essential to this research, iteratively estimating model parameters to maximize data likelihood under the SSM-DNN framework. The algorithm includes the following steps:
 
 <h4>1. Initialization:<h4></h4>
