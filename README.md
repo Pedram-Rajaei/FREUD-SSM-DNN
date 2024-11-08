@@ -29,11 +29,11 @@ This framework is built on two fundamental components:
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
 
  - <b>Transition Equation: (SSM):</b> X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>,     ϵ<sub>k</sub>), ϵ<sub>k</sub> ∼ N(0, R)
-Here, f<sub>ψ</sub> captures the temporal evolution of the latent states with process noise ϵ<sub>k</sub> governed by covariance <b><i>R</i></b>.
+<br>Here, <b><i>f<sub>ψ</sub></i></b> captures the temporal evolution of the latent states with process noise <b><i>ϵ<sub>k</sub></i></b> governed by covariance <b><i>R</i></b>.
  - <b>Observation Equation:</b> Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>),     v<sub>k</sub> ∼ N(0, Q)
-The mapping g<sub>ϕ</sub> relates the latent states to neural observations Y<sub>k</sub>, with observational noise and covariance <b><i>Q</i></b>.
+<br>The mapping <b><i>g<sub>ϕ</sub></i></b> relates the latent states to neural observations <b><i>Y<sub>k</sub></i></b>, with observational noise and covariance <b><i>Q</i></b>.
  - <b>Classification Equation:</b> l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)
-The DNN, represented by h<sub>ϕ</sub>, processes the latent state trajectory X<sub>0:K</sub> to predict the label <b><i>l</i></b> associated with the task or condition.
+<br>The DNN, represented by <b><i>h<sub>ϕ</sub></i></b>, processes the latent state trajectory <b><i>X<sub>0:K</sub></i></b> to predict the label <b><i>l</i></b> associated with the task or condition.
    <br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
 
 <h2>Code Structure and Documentation</h2>
