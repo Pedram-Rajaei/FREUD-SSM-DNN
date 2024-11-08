@@ -79,4 +79,5 @@ The project requires the following libraries:
 - ```matplotlib```
 - ```seaborn```
 Install them via:
+<br>
 ```pip install torch numpy pandas scipy matplotlib seaborn```
