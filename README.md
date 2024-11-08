@@ -93,4 +93,23 @@ Install them via:
 <b>2. Model Training and EM Iteration:</b> Run the primary training script:
 <br>
 ```python main.py```
+This script loads data, trains the CNN classifier, and iteratively updates model parameters using EM steps.
 
+<h2>Example Usage</h2>
+
+<h2>Results and Interpretability</h2>
+
+The model significantly improved decoding accuracy and interpretability:
+
+- Classification Performance: The SSM-DNN model achieved an F1 score of 0.75 ± 0.01, indicating robust decoding accuracy.
+- Feature Relevance: Using Integrated Gradients, the model highlighted the role of the pre-central gyrus in task execution, aligning with known motor control areas in the cortex.
+
+These findings underscore the model’s utility in both decoding neural states and elucidating neural mechanisms underlying specific tasks.
+
+<h2>Citation</h2>
+
+If this work contributes to your research, please cite as follows:
+
+<h2>Acknowledgments</h2>
+
+We thank the neuroscience and machine learning communities for foundational methods and datasets that contributed to this work. Special thanks to the contributors of the AJILE12 dataset and to those who developed the Integrated Gradients methodology.
