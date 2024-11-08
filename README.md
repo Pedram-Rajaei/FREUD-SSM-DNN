@@ -34,7 +34,8 @@ The model operates on trial-level neural data and label sequences. Given a seque
 <br>The mapping <b><i>g<sub>ϕ</sub></i></b> relates the latent states to neural observations <b><i>Y<sub>k</sub></i></b>, with observational noise and covariance <b><i>Q</i></b>.
  - <b>Classification Equation:</b> <div align="center"><b><i>l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</i></b></div>
 <br>The DNN, represented by <b><i>h<sub>ϕ</sub></i></b>, processes the latent state trajectory <b><i>X<sub>0:K</sub></i></b> to predict the label <b><i>l</i></b> associated with the task or condition.
-   <br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
+
+<br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
 
 <h2>Code Structure and Documentation</h2>
 The codebase is organized into the following modules:
