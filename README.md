@@ -31,7 +31,7 @@ The model operates on trial-level neural data and label sequences. Given a seque
  - <b>Transition Equation: (SSM):</b>
  - <b>Observation Equation:</b>
  - <b>Classification Equation:</b>
- The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
+ </n>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
 
 <h2>Code Structure and Documentation</h2>
 The codebase is organized into the following modules:
