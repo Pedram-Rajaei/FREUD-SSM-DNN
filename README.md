@@ -13,6 +13,7 @@ This repository provides:
 In neuroscience, the manifold hypothesis posits that complex, high-dimensional data, such as neural recordings, lie on a lower-dimensional, non-linear manifold. Identifying this manifold and decoding the latent neural states is crucial for understanding underlying neural dynamics, such as those associated with motor control or cognitive processes. This research introduces a model that combines <b>SSM</b> and <b>DNN</b> to characterize this manifold, linking neural dynamics to specific tasks or experimental conditions (e.g., hand movement or resting states) by jointly performing manifold inference and label prediction.
 
 <h2>Key Contributions</h2>
+
 - <b>SSM-DNN Hybrid Model</b>: Integrates the temporal dynamics of SSM with the classification capabilities of DNN.
 - <b>Latent Manifold Representation</b>: Learns a low-dimensional structure that represents the neural data across time.
 - <b>Multi-Scale Decoding</b>: Classifies task labels based on neural dynamics at different temporal scales, enabling robust trial-level predictions.
@@ -33,8 +34,27 @@ The model operates on trial-level neural data and label sequences. Given a seque
 <h2>Code Structure and Documentation</h2>
 The codebase is organized into the following modules:
 
-- data_processing.py: Handles data loading and preprocessing, including reading CSV files and preparing time-series neural data.
-- cnn1d_model.py: Defines a 1D CNN architecture that processes latent neural states for binary classification tasks.
-- particle_filter.py: Implements the particle filtering algorithm to estimate the latent states over time.
-- em_algorithm.py: Contains the Expectation-Maximization (EM) algorithm, which iteratively refines model parameters using E-step (particle filtering), M-step (parameter updates), and NN-step (DNN training).
+- ```data_processing.py:``` Handles data loading and preprocessing, including reading CSV files and preparing time-series neural data.
+- ```cnn1d_model.py:``` Defines a 1D CNN architecture that processes latent neural states for binary classification tasks.
+- ```particle_filter.py:``` Implements the particle filtering algorithm to estimate the latent states over time.
+- ```em_algorithm.py:``` Contains the Expectation-Maximization (EM) algorithm, which iteratively refines model parameters using E-step (particle filtering), M-step (parameter updates), and NN-step (DNN training).
 - ```utils.py:``` Utility functions for data handling, training, and visualizing neural dynamics.
+
+<h2>Methodology</h2>
+<h3></h3>EM Algorithm and Training Procedure</
+The EM algorithm is essential to this research, iteratively estimating model parameters to maximize data likelihood under the SSM-DNN framework. The algorithm includes the following steps:
+
+<h4>1. Initialization:<h4></h4>
+- The latent state, noise covariances, and transition matrices are initialized.
+
+<h4>2. E-Step (Particle Filtering):</h4>
+- Latent states X<sub>k</sub> are inferred using a particle filter for each trial, leveraging the SSM dynamics. The particle filter iteratively updates particles based on neural data, generating state estimates that represent the underlying manifold structure.
+
+<h4>3. M-Step (Parameter Update):</h4>
+- Model parameters are updated using maximum likelihood estimation. Transition (A, B) and observation (C, D) matrices are optimized based on inferred states, while covariances <I>Q</I> and <I>R</I> are recalculated to account for process and observation noise.
+
+<h4>4. NN-Step (DNN Training):</h4>
+- The DNN classifier is trained using updated particle-filtered states, refining the latent representation to improve label prediction.
+
+<h4>5. Convergence:</h4>
+- This process repeats until the model achieves stable likelihood values, indicating convergence.
