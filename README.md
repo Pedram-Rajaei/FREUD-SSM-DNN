@@ -104,6 +104,23 @@ python main.py
 This script loads data, trains the CNN classifier, and iteratively updates model parameters using EM steps.
 
 <h2>Example Usage</h2>
+<pre>
+# Import necessary modules
+from cnn1d_model import CNN1D
+from em_algorithm import EMAlgorithm
+
+# Configure model parameters
+dim_state, dim_obs = 1, 1
+R, R0 = np.array([1]), np.array([1])
+n_steps, num_particles, num_trials, max_iter = 360, 500, 23, 10
+
+# Initialize and execute the EM Algorithm
+em_algo = EMAlgorithm(Y, label, dim_state, dim_obs, simulation_mode=1, update_params_mode=[1, 2, 2, 1],
+                      mode=1, R=R, R0=R0, n_steps=n_steps, num_particles=num_particles,
+                      num_trials=num_trials, max_iter=max_iter)
+em_algo.run_nn()  # Neural network initialization
+em_algo.run_em()  # Run EM iteration
+</pre>
 
 <h2>Results and Interpretability</h2>
 
