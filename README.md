@@ -89,11 +89,13 @@ Install them via:
 
 <h2>Running the Model</h2>
 <b>1. Data Preparation:</b> Store neural time-series data in the following directory structure on Google Drive:
-```Google Drive
-   └── My Drive
-       └── Behavior
-           ├── ctl   # Control condition data files
-           └── mdd   # Task-specific data files```
+<pre>
+Google Drive
+└── My Drive
+    └── Behavior
+        ├── ctl   # Control condition data files
+        └── mdd   # Task-specific data files
+</pre>
 <b>2. Model Training and EM Iteration:</b> Run the primary training script:
 <br>
 ```python main.py```
