@@ -97,8 +97,9 @@ Google Drive
         └── mdd   # Task-specific data files
 </pre>
 <b>2. Model Training and EM Iteration:</b> Run the primary training script:
-<br>
-```python main.py```
+<pre>
+python main.py
+</pre>
 This script loads data, trains the CNN classifier, and iteratively updates model parameters using EM steps.
 
 <h2>Example Usage</h2>
