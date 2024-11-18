@@ -1,16 +1,62 @@
 <h1>Inferring and Predicting Neural Dynamics via Generative-Discriminative Manifold Learning</h1>
 
 <h2>Overview</h2>
-This repository contains the code and models for the study <b>"Inferring and Predicting Neural Dynamics via Generative-Discriminative Manifold Learning."</b> This project presents a novel hybrid model that integrates <b>state-space models (SSM)</b> with <b>deep neural networks (DNN)</b> to enable both inference of latent neural dynamics and accurate classification of task-specific labels from high-dimensional time series data, specifically neural recordings. By combining generative and discriminative approaches, the model uncovers latent manifold structures within neural data and predicts trial-level labels, advancing the fields of neural manifold learning and neural decoding.
+<p>
+This repository contains the code and models for the study <strong>"Inferring and Predicting Neural Dynamics via Generative-Discriminative Manifold Learning."</strong> 
+This project presents a novel hybrid model that integrates <strong>state-space models (SSM)</strong> with <strong>deep neural networks (DNN)</strong> to enable both inference of latent neural dynamics and accurate classification 
+of task-specific labels from high-dimensional time series data, such as neural recordings. By combining generative and discriminative approaches, the model uncovers latent manifold structures 
+within neural data and predicts trial-level labels, advancing the fields of neural manifold learning and neural decoding.
+</p>
 
-This repository provides:
+<h3>This repository provides:</h3>
 
-- A <b>1D Convolutional Neural Network (CNN)</b> architecture for classification on latent neural dynamics.
-- A <b>particle filter</b> for inference of time-evolving latent states.
-- An <b>Expectation-Maximization (EM)</b> algorithm to iteratively estimate and update model parameters.
+<h4>1. Model Definition and Methods for Learning and Inference</h4>
+<p>
+In neuroscience, the manifold hypothesis posits that complex, high-dimensional data, such as neural recordings, lie on a lower-dimensional, non-linear manifold. Identifying this manifold and 
+decoding latent neural states is crucial for understanding the underlying dynamics associated with motor control or cognitive processes.
+</p>
+<p>
+This research introduces a model that combines <strong>state-space models (SSM)</strong> and <strong>deep neural networks (DNN)</strong> to characterize this manifold. The state-space model governs temporal dynamics, 
+capturing the evolution of latent states, while the deep neural network leverages these states for trial-level label prediction. By integrating these components, the model performs 
+manifold inference and label prediction simultaneously, providing an interpretable and scalable approach to neural decoding.
+</p>
 
-<h2>Research Context</h2>
-In neuroscience, the manifold hypothesis posits that complex, high-dimensional data, such as neural recordings, lie on a lower-dimensional, non-linear manifold. Identifying this manifold and decoding the latent neural states is crucial for understanding underlying neural dynamics, such as those associated with motor control or cognitive processes. This research introduces a model that combines <b>SSM</b> and <b>DNN</b> to characterize this manifold, linking neural dynamics to specific tasks or experimental conditions (e.g., hand movement or resting states) by jointly performing manifold inference and label prediction.
+<h4>2. Toolset Functions and Structure</h4>
+<p>
+The repository includes a comprehensive suite of functions for preprocessing neural data, implementing the particle filter for state inference, training the DNN for classification, 
+and running the Expectation-Maximization (EM) algorithm. These toolsets allow researchers to:
+</p>
+<ul>
+  <li>Process high-dimensional neural time-series data efficiently.</li>
+  <li>Use particle filtering for inference of latent states, which are otherwise unobservable.</li>
+  <li>Optimize model parameters iteratively through the EM algorithm, ensuring that both the generative and discriminative components adapt to the data.</li>
+</ul>
+<p>
+The modular codebase is structured to support flexibility and extendability for other machine learning tasks involving manifold learning and state inference.
+</p>
+
+<h4>3. Simulation Analysis</h4>
+<p>
+To validate the approach, the repository provides simulation frameworks for synthetic data generation and analysis. These simulations are critical for:
+</p>
+<ul>
+  <li>Testing the performance of the SSM-DNN model under controlled conditions.</li>
+  <li>Evaluating the accuracy of state inference and label prediction.</li>
+  <li>Exploring the role of key hyperparameters (e.g., number of particles, dimensionality of the latent space) in the model's performance.</li>
+</ul>
+<p>
+The simulation scripts demonstrate the robustness of the hybrid model in learning complex dynamics and adapting to varying levels of noise and variability.
+</p>
+
+<h4>4. Application in Neural Data</h4>
+<p>
+The model is applied to real neural data, such as electrocorticography (ECoG) or electroencephalography (EEG), to decode neural dynamics associated with tasks like hand movement and resting states. 
+By inferring a latent manifold from these recordings, the model provides insights into the temporal evolution of neural activity and its relationship to task-specific labels.
+</p>
+<p>
+For example, in the <strong>AJILE12 dataset</strong>, the model achieves state-of-the-art classification accuracy, outperforming benchmarks in neural decoding. Additionally, the use of 
+Integrated Gradients enables feature importance analysis, highlighting significant neural components that contribute to task predictions.
+</p>
 
 <h2>Key Contributions</h2>
 
