@@ -133,7 +133,7 @@ The model employs a combination of <strong>state-space modeling (SSM)</strong> a
 The temporal evolution of the latent states is governed by the <strong>transition equation</strong>:
 </p>
 <div style="text-align: center;">
-  <em>X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>, ε<sub>k</sub>), ε<sub>k</sub> ∼ N(0, R)</em>
+  <em style="text-align: center">X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>, ε<sub>k</sub>), ε<sub>k</sub> ∼ N(0, R)</em>
 </div>
 <p>
 Here:
