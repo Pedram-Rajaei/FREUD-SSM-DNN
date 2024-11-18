@@ -60,10 +60,24 @@ Integrated Gradients enables feature importance analysis, highlighting significa
 
 <h2>Key Contributions</h2>
 
-- <b>SSM-DNN Hybrid Model</b>: Integrates the temporal dynamics of SSM with the classification capabilities of DNN.
-- <b>Latent Manifold Representation</b>: Learns a low-dimensional structure that represents the neural data across time.
-- <b>Multi-Scale Decoding</b>: Classifies task labels based on neural dynamics at different temporal scales, enabling robust trial-level predictions.
-- <b>Feature Importance with Integrated Gradients</b>: Assesses feature contributions within the manifold for biological interpretability.
+<ul>
+  <li>
+    <strong>SSM-DNN Hybrid Model:</strong> Integrates the temporal dynamics of SSM with the predictive capabilities of DNN. 
+    The framework is adaptable for both classification and regression tasks, making it suitable for a wide range of neural data analysis problems.
+  </li>
+  <li>
+    <strong>Latent Manifold Representation:</strong> Learns a low-dimensional structure that effectively represents neural data across time, 
+    capturing underlying dynamics and providing insights into task-specific or condition-specific neural activity.
+  </li>
+  <li>
+    <strong>Temporal Scale Integration:</strong> Combines information across different time scales, enabling the model to leverage both short-term 
+    and long-term dynamics for improved task-specific prediction.
+  </li>
+  <li>
+    <strong>Feature Sorting via Integrated Gradient Importance Ranking:</strong> Utilizes Integrated Gradients to rank features based on their importance, 
+    allowing the identification of critical neural components within the manifold for interpretability and biological relevance.
+  </li>
+</ul>
 
 <h2>Model Architecture</h2>
 This framework is built on two fundamental components:
