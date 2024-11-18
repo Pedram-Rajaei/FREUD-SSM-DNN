@@ -85,29 +85,34 @@ This framework is built on two fundamental components:
 </p>
 <ul>
   <li>
-    <strong>State-Space Model (SSM):</strong> A generative model that governs the temporal evolution of the latent states <em>X<sub>k</sub></em>, capturing dynamics in a reduced-dimensional space.
+    <strong>State-Space Model (SSM):</strong> A generative model that governs the temporal evolution of the latent states <em>X<sub>k</sub></em>, capturing dynamics in a reduced-dimensional space. 
+    The SSM effectively models the temporal dependencies, providing a rich understanding of how neural states evolve over time.
   </li>
   <li>
-    <strong>Deep Neural Network (DNN):</strong> A predictive model that leverages the latent states for both classification and regression tasks, optimizing the manifold for accurate and interpretable predictions.
+    <strong>Deep Neural Network (DNN):</strong> A predictive model that leverages the latent states for both classification and regression tasks, optimizing the manifold for accurate 
+    and interpretable predictions. The DNN captures task-specific features, mapping them to desired outputs such as task labels or regression targets.
   </li>
 </ul>
 <p>
-The integration of these components allows the model to uncover latent manifold structures, infer state dynamics, and solve predictive tasks effectively.
+By integrating these components, the model simultaneously performs <strong>manifold learning</strong> to uncover latent structures and <strong>prediction tasks</strong> to infer state dynamics 
+or generate outputs effectively.
 </p>
-<div style="text-align: center;">
+
+<div style="text-align: center; margin-top: 20px;">
   <!-- Image Section -->
-  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" width="600">
+  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
   
   <!-- Legend Section -->
-  <div style="text-align: left; margin-top: 10px; font-family: Arial, sans-serif; font-size: 14px;">
+  <div style="text-align: center; margin-top: 15px; font-family: Arial, sans-serif; font-size: 14px;">
     <strong>Legend:</strong>
-    <ul>
-      <li><span style="color: green;">Green:</span> Neural Data (<em>Y</em>) - Represents the input time-series data, such as neural recordings or EEG signals.</li>
-      <li><span style="color: orange;">Orange:</span> Latent States (<em>X</em>) - Represents the lower-dimensional manifold capturing the temporal dynamics inferred by the model.</li>
-      <li><span style="color: blue;">Blue:</span> Task Predictions (<em>L</em>) - Represents the output of the model, such as classification or regression results.</li>
+    <ul style="list-style-type: none; padding: 0; text-align: left; display: inline-block;">
+      <li><span style="color: green; font-weight: bold;">● Green:</span> Neural Data (<em>Y</em>) - Represents the input time-series data, such as neural recordings or EEG signals.</li>
+      <li><span style="color: orange; font-weight: bold;">● Orange:</span> Latent States (<em>X</em>) - Represents the lower-dimensional manifold capturing the temporal dynamics inferred by the model.</li>
+      <li><span style="color: blue; font-weight: bold;">● Blue:</span> Task Predictions (<em>L</em>) - Represents the output of the model, such as classification or regression results.</li>
     </ul>
   </div>
 </div>
+
 
 
 <h2>Mathematical Formulation</h2>
