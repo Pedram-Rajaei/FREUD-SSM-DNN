@@ -228,8 +228,69 @@ The DNN classifier is trained using updated particle-filtered states, refining t
 <h4>5. Convergence:</h4>
 This process repeats until the model achieves stable likelihood values, indicating convergence.
 
-<h3>Feature Importance via Integrated Gradients</h3>
-The Integrated Gradients method evaluates feature importance by assessing the contribution of each input feature to the model’s output, providing insights into which neural components are critical for task prediction.
+<h2>Feature Sorting Through Integrated Gradient Ranking</h2>
+<p>
+The <strong>Integrated Gradients (IG)</strong> method provides a principled approach to quantify feature importance in neural networks. 
+By evaluating how much each input feature contributes to the model’s output, this method sheds light on the underlying neural components that drive task prediction. 
+This is particularly valuable in understanding and interpreting neural data in a biologically meaningful way.
+</p>
+
+<h3>Overview of Integrated Gradients</h3>
+<p>
+Integrated Gradients measure feature importance by computing the integral of gradients of the model’s output with respect to its input, along a path from a baseline input (typically zero) to the actual input. 
+It ensures that the feature attributions are consistent and satisfy the axioms of sensitivity and implementation invariance.
+</p>
+
+<h3>Mathematical Representation</h3>
+<p>
+For a model <em>F</em> and an input <em>x</em>, the Integrated Gradients for the <em>i</em>-th feature are defined as:
+</p>
+<div style="text-align: center; margin: 20px 0;">
+  <em>IG<sub>i</sub>(x) = (x<sub>i</sub> - x<sub>i</sub><sup>baseline</sup>) 
+  ∫<sub>α=0</sub><sup>1</sup> 
+  (∂F(x<sup>baseline</sup> + α · (x - x<sup>baseline</sup>)) / ∂x<sub>i</sub>) dα</em>
+</div>
+<p>
+Where:
+</p>
+<ul>
+  <li><em>x<sup>baseline</sup></em>: The baseline input, often chosen as a vector of zeros or the mean of the input data.</li>
+  <li><em>x</em>: The actual input.</li>
+  <li><em>α</em>: A scaling factor that interpolates between the baseline and the actual input.</li>
+  <li><em>∂F / ∂x<sub>i</sub></em>: The gradient of the model’s output with respect to the <em>i</em>-th feature.</li>
+</ul>
+
+<h3>Interpretation</h3>
+<ul>
+  <li>
+    <strong>Feature Ranking:</strong> The magnitude of <em>IG<sub>i</sub>(x)</em> indicates the importance of the <em>i</em>-th feature. Features with larger magnitudes contribute more significantly to the output.
+  </li>
+  <li>
+    <strong>Cumulative Contribution:</strong> The sum of Integrated Gradients across all features approximates the difference between the model’s output for the actual input and the baseline:
+    <div style="text-align: center; margin: 20px 0;">
+      <em>∑<sub>i</sub> IG<sub>i</sub>(x) ≈ F(x) - F(x<sup>baseline</sup>)</em>
+    </div>
+  </li>
+  <li>
+    <strong>Visualization:</strong> Integrated Gradients can be visualized as heatmaps or importance rankings to highlight which neural components (e.g., neurons, channels, or time steps) are most influential for a specific task.
+  </li>
+</ul>
+
+<h3>Biological Relevance</h3>
+<p>
+When applied to neural data, Integrated Gradients enable:
+</p>
+<ul>
+  <li><strong>Identification of Critical Neural Features:</strong> Pinpointing specific neurons, time points, or frequency bands that are most relevant for decoding task labels.</li>
+  <li><strong>Interpretability in Neural Dynamics:</strong> Understanding how latent states or neural components interact to influence the model's predictions.</li>
+</ul>
+
+<h3>Advantages of Integrated Gradients</h3>
+<ul>
+  <li><strong>Sensitivity:</strong> Accurately attributes importance to features that affect the model's output.</li>
+  <li><strong>Consistency:</strong> Provides the same attributions for models with equivalent functions, ensuring robustness across different architectures.</li>
+  <li><strong>Biological Insight:</strong> Facilitates the interpretation of complex neural dynamics in a task-relevant context.</li>
+</ul>
 
 <h2>Dataset and Experimentation</h2>
 The model was validated using the <b>AJILE12 dataset</b> of ECoG recordings from participants performing motor and rest tasks. A thorough evaluation was conducted using 10-fold cross-validation, yielding an F1 score of <b>0.75 ± 0.01</b>, outperforming benchmark methods such as HTNet by 5%.
