@@ -210,23 +210,115 @@ The codebase is organized into the following modules:
 - ```utils.py:``` Utility functions for data handling, training, and visualizing neural dynamics.
 
 <h2>Methodology</h2>
-<h3>EM Algorithm and Training Procedure</h3>
-The EM algorithm is essential to this research, iteratively estimating model parameters to maximize data likelihood under the SSM-DNN framework. The algorithm includes the following steps:
+<h2>EM Algorithm and Training Procedure</h2>
+<p>
+The <strong>Expectation-Maximization (EM)</strong> algorithm is a core component of this research, enabling the iterative optimization of model parameters under the SSM-DNN framework. 
+This approach ensures that both the <strong>latent state dynamics</strong> and the <strong>task-specific predictions</strong> are accurately captured by maximizing the <strong>full likelihood</strong> of the observed data.
+</p>
 
-<h4>1. Initialization:<h4></h4>
-The latent state, noise covariances, and transition matrices are initialized.
+<h3>Objective: Full Likelihood</h3>
+<p>
+The full likelihood combines contributions from:
+</p>
+<ol>
+  <li><strong>State Transitions:</strong> The probability of transitioning between latent states <em>X<sub>k</sub></em>, governed by the state-space model (SSM):
+    <div style="text-align: center; margin: 10px 0;">
+      <em>P(X<sub>k</sub> | X<sub>k-1</sub>; A, B, R)</em>
+    </div>
+    Here, <em>A</em>, <em>B</em> are the state transition matrices, and <em>R</em> is the process noise covariance.
+  </li>
+  <li><strong>Observations:</strong> The probability of the observed neural data <em>Y<sub>k</sub></em> given the latent states:
+    <div style="text-align: center; margin: 10px 0;">
+      <em>P(Y<sub>k</sub> | X<sub>k</sub>; C, D, Q)</em>
+    </div>
+    Here, <em>C</em>, <em>D</em> are the observation matrices, and <em>Q</em> is the observation noise covariance.
+  </li>
+  <li><strong>Task Predictions:</strong> The probability of predicting the trial label <em>l</em> given the latent state sequence <em>X<sub>0</sub>, ..., X<sub>K</sub></em> via the DNN:
+    <div style="text-align: center; margin: 10px 0;">
+      <em>P(l | X<sub>0:K</sub>; φ)</em>
+    </div>
+    Here, <em>φ</em> represents the parameters of the DNN.
+  </li>
+</ol>
+<p>
+The objective of the EM algorithm is to maximize the combined likelihood:
+</p>
+<div style="text-align: center; margin: 20px 0;">
+  <em>ℒ = ∑<sub>trials</sub> [ log P(X<sub>0</sub>) + ∑<sub>k=1</sub><sup>K</sup> log P(X<sub>k</sub> | X<sub>k-1</sub>) + ∑<sub>k=1</sub><sup>K</sup> log P(Y<sub>k</sub> | X<sub>k</sub>) + log P(l | X<sub>0:K</sub>) ]</em>
+</div>
 
-<h4>2. E-Step (Particle Filtering):</h4>
-Latent states X<sub>k</sub> are inferred using a particle filter for each trial, leveraging the SSM dynamics. The particle filter iteratively updates particles based on neural data, generating state estimates that represent the underlying manifold structure.
+<h3>Training Steps</h3>
+<ol>
+  <li><strong>Initialization:</strong>
+    <ul>
+      <li>Initialize latent states (<em>X<sub>0</sub></em>), noise covariances (<em>Q, R</em>), and transition matrices (<em>A, B, C, D</em>).</li>
+      <li>Set initial parameters of the DNN classifier (<em>φ</em>).</li>
+    </ul>
+  </li>
+  <li><strong>E-Step (Particle Filtering):</strong>
+    <ul>
+      <li>Use a <strong>particle filter</strong> to infer latent states (<em>X<sub>k</sub></em>) for each trial.</li>
+      <li>Particles are propagated based on the SSM dynamics and weighted using the observed data (<em>Y<sub>k</sub></em>).</li>
+      <li>This step generates state estimates that represent the latent manifold structure.</li>
+    </ul>
+  </li>
+  <li><strong>M-Step (Parameter Update):</strong>
+    <ul>
+      <li>Update the <strong>transition matrices</strong> (<em>A, B</em>) and <strong>observation matrices</strong> (<em>C, D</em>) using maximum likelihood estimation.</li>
+      <li>Recalculate covariances (<em>Q, R</em>) to reflect updated process and observation noise.</li>
+    </ul>
+  </li>
+  <li><strong>NN-Step (DNN Training):</strong>
+    <ul>
+      <li>Train the DNN on the particle-filtered states to refine the latent representation and improve trial label predictions.</li>
+      <li>The DNN adjusts its parameters (<em>φ</em>) to optimize classification or regression tasks.</li>
+    </ul>
+  </li>
+  <li><strong>Convergence:</strong>
+    <ul>
+      <li>Repeat the steps until the likelihood stabilizes, indicating parameter convergence.</li>
+    </ul>
+  </li>
+</ol>
 
-<h4>3. M-Step (Parameter Update):</h4>
-Model parameters are updated using maximum likelihood estimation. Transition (A, B) and observation (C, D) matrices are optimized based on inferred states, while covariances <I>Q</I> and <I>R</I> are recalculated to account for process and observation noise.
+<h3>Pseudocode for the EM Algorithm</h3>
+<pre style="background-color: #f4f4f4; padding: 10px; border-radius: 5px;">
+# Initialize parameters
+Initialize X_0, A, B, C, D, Q, R, φ (DNN parameters)
+Set convergence_threshold = ε
+Set max_iterations = N
+likelihood_previous = -inf
 
-<h4>4. NN-Step (DNN Training):</h4>
-The DNN classifier is trained using updated particle-filtered states, refining the latent representation to improve label prediction.
+# Begin EM iterations
+for iteration in range(max_iterations):
+    # E-Step: Particle Filtering
+    for trial in trials:
+        for time_step in range(steps):
+            Propagate particles using SSM dynamics
+            Update particle weights using observed data Y_k
+        Infer latent states X_k using resampled particles
 
-<h4>5. Convergence:</h4>
-This process repeats until the model achieves stable likelihood values, indicating convergence.
+    # M-Step: Update Parameters
+    Update transition matrices (A, B) using maximum likelihood
+    Update observation matrices (C, D) using inferred states
+    Recalculate process (R) and observation (Q) covariances
+
+    # NN-Step: Train DNN
+    Train DNN using particle-filtered latent states X_0:K
+    Update φ to improve label prediction
+
+    # Evaluate likelihood
+    likelihood_current = Calculate full likelihood (ℒ)
+    if abs(likelihood_current - likelihood_previous) < convergence_threshold:
+        break
+    likelihood_previous = likelihood_current
+
+# Return optimized parameters
+Return A, B, C, D, Q, R, φ
+</pre>
+<p>
+The EM algorithm combines generative and discriminative modeling to infer latent structures, optimize parameters, and predict task-specific labels, making it a robust tool for neural data analysis.
+</p>
 
 <h2>Feature Sorting Through Integrated Gradient Ranking</h2>
 <p>
