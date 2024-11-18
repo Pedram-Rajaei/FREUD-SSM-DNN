@@ -116,16 +116,89 @@ or generate outputs effectively.
 
 
 <h2>Mathematical Formulation</h2>
-The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
+<p>
+This model is designed to analyze <strong>trial-level neural data</strong> to uncover latent dynamics and predict task-specific labels. 
+Each trial corresponds to a time-segmented sequence of neural activity recorded during a specific experimental condition, such as a task or stimulus presentation. 
+The model employs a combination of <strong>state-space modeling (SSM)</strong> and a <strong>deep neural network (DNN)</strong> to achieve this.
+</p>
 
- - <b>Transition Equation: (SSM):</b> <div align="center"><b><i>X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>,     ϵ<sub>k</sub>), ϵ<sub>k</sub> ∼ N(0, R)</i></b></div>
-<br>Here, <b><i>f<sub>ψ</sub></i></b> captures the temporal evolution of the latent states with process noise <b><i>ϵ<sub>k</sub></i></b> governed by covariance <b><i>R</i></b>.
- - <b>Observation Equation:</b> <div align="center"><b><i>Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>),     v<sub>k</sub> ∼ N(0, Q)</i></b></div>
-<br>The mapping <b><i>g<sub>ϕ</sub></i></b> relates the latent states to neural observations <b><i>Y<sub>k</sub></i></b>, with observational noise and covariance <b><i>Q</i></b>.
- - <b>Classification Equation:</b> <div align="center"><b><i>l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</i></b></div>
-<br>The DNN, represented by <b><i>h<sub>ϕ</sub></i></b>, processes the latent state trajectory <b><i>X<sub>0:K</sub></i></b> to predict the label <b><i>l</i></b> associated with the task or condition.
+<h3>Trial Data Integration</h3>
+<ul>
+  <li>Neural recordings (<em>Y<sub>k</sub></em>) across multiple trials are used to train the model.</li>
+  <li>Each trial is defined as a sequence of observations (<em>Y<sub>k</sub></em>) recorded over discrete time steps (<em>k</em>) and associated with a specific task or experimental condition.</li>
+  <li>The model processes each trial’s latent dynamics (<em>X<sub>k</sub></em>) to predict its label (<em>l</em>), which represents the task or condition under which the data was recorded.</li>
+</ul>
 
-<br>The SSM component captures temporal dependencies, while the DNN component leverages these dynamics for label prediction, optimizing the latent representation for both inference and discrimination.
+<h3>Transition Equation (State-Space Model - SSM)</h3>
+<p>
+The temporal evolution of the latent states is governed by the <strong>transition equation</strong>:
+</p>
+<p style="text-align: center;">
+  <em>X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>, ε<sub>k</sub>), ε<sub>k</sub> ∼ N(0, R)</em>
+</p>
+<p>
+Here:
+</p>
+<ul>
+  <li><em>f<sub>ψ</sub></em>: A function capturing the temporal dependencies in the latent states, parameterized by <em>ψ</em>.</li>
+  <li><em>ε<sub>k</sub></em>: Process noise with covariance <em>R</em>, accounting for uncertainty in the state evolution.</li>
+</ul>
+<p>
+This equation ensures that the latent states are temporally coherent and evolve in a way that reflects the dynamics of the underlying neural processes.
+</p>
+
+<h3>Observation Equation</h3>
+<p>
+The relationship between the latent states and the recorded neural data (<em>Y<sub>k</sub></em>) is defined by the <strong>observation equation</strong>:
+</p>
+<p style="text-align: center;">
+  <em>Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>), v<sub>k</sub> ∼ N(0, Q)</em>
+</p>
+<p>
+Here:
+</p>
+<ul>
+  <li><em>g<sub>ϕ</sub></em>: A mapping function that relates latent states to observed data, parameterized by <em>ϕ</em>.</li>
+  <li><em>v<sub>k</sub></em>: Observational noise with covariance <em>Q</em>, accounting for variability in the recorded data.</li>
+</ul>
+<p>
+This equation allows the model to map latent states (<em>X<sub>k</sub></em>) to neural recordings (<em>Y<sub>k</sub></em>), capturing how observed neural signals are generated.
+</p>
+
+<h3>Classification Equation</h3>
+<p>
+The sequence of latent states across an entire trial (<em>X<sub>0</sub>, X<sub>1</sub>, ..., X<sub>K</sub></em>) is processed by a <strong>deep neural network (DNN)</strong> to predict the trial label (<em>l</em>):
+</p>
+<p style="text-align: center;">
+  <em>l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</em>
+</p>
+<p>
+Here:
+</p>
+<ul>
+  <li><em>h<sub>ϕ</sub></em>: The DNN parameterized by <em>ϕ</em>, which learns to discriminate between task-specific labels based on the trajectory of latent states over time.</li>
+  <li><em>l</em>: The predicted label, corresponding to the task or experimental condition.</li>
+</ul>
+<p>
+The DNN complements the SSM by leveraging temporal dependencies in the latent states to optimize the representation for accurate label prediction.
+</p>
+
+<h3>Biological Relevance</h3>
+<p>
+This framework is particularly suited for neuroscience research, where latent neural states are often inferred to understand cognitive processes or motor control. For example:
+</p>
+<ul>
+  <li><strong>Motor Control:</strong> Latent states (<em>X<sub>k</sub></em>) may correspond to brain activity patterns associated with hand movement.</li>
+  <li><strong>Task-Specific Decoding:</strong> Labels (<em>l</em>) can represent tasks (e.g., left-hand vs. right-hand movement), and the model predicts these based on neural data.</li>
+</ul>
+<p>
+By combining generative (SSM) and discriminative (DNN) approaches, the model simultaneously:
+</p>
+<ul>
+  <li>Infers latent manifold structures.</li>
+  <li>Decodes task-relevant information from neural recordings.</li>
+</ul>
+
 
 <h2>Code Structure and Documentation</h2>
 The codebase is organized into the following modules:
