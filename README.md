@@ -100,15 +100,15 @@ or generate outputs effectively.
 
 <div style="text-align: center; margin-top: 20px;">
   <!-- Image Section -->
-  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" style="max-width: 100%; height: 10px; border: 1px solid #ddd; border-radius: 8px;">
   
   <!-- Legend Section -->
   <div style="text-align: center; margin-top: 15px; font-family: Arial, sans-serif; font-size: 14px;">
     <strong>Legend:</strong>
     <ul style="list-style-type: none; padding: 0; text-align: left; display: inline-block;">
-      <li><span style="color: green; font-weight: bold;">● Green:</span> Neural Data (<em>Y</em>) - Represents the input time-series data, such as neural recordings or EEG signals.</li>
-      <li><span style="color: orange; font-weight: bold;">● Orange:</span> Latent States (<em>X</em>) - Represents the lower-dimensional manifold capturing the temporal dynamics inferred by the model.</li>
-      <li><span style="color: blue; font-weight: bold;">● Blue:</span> Task Predictions (<em>L</em>) - Represents the output of the model, such as classification or regression results.</li>
+      <li><span style="color: green; font-weight: bold;">Green:</span> Neural Data (<em>Y</em>) - Represents the input time-series data, such as neural recordings or EEG signals.</li>
+      <li><span style="color: orange; font-weight: bold;">Orange:</span> Latent States (<em>X</em>) - Represents the lower-dimensional manifold capturing the temporal dynamics inferred by the model.</li>
+      <li><span style="color: blue; font-weight: bold;">Blue:</span> Task Predictions (<em>L</em>) - Represents the output of the model, such as classification or regression results.</li>
     </ul>
   </div>
 </div>
