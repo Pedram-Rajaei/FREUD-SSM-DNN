@@ -114,7 +114,6 @@ or generate outputs effectively.
 </div>
 
 
-
 <h2>Mathematical Formulation</h2>
 <p>
 This model is designed to analyze <strong>trial-level neural data</strong> to uncover latent dynamics and predict task-specific labels. 
@@ -133,9 +132,9 @@ The model employs a combination of <strong>state-space modeling (SSM)</strong> a
 <p>
 The temporal evolution of the latent states is governed by the <strong>transition equation</strong>:
 </p>
-<p style="text-align: center;">
+<div style="text-align: center; margin: 20px 0;">
   <em>X<sub>k+1</sub> | X<sub>k</sub> ∼ f<sub>ψ</sub>(X<sub>k</sub>, ε<sub>k</sub>), ε<sub>k</sub> ∼ N(0, R)</em>
-</p>
+</div>
 <p>
 Here:
 </p>
@@ -151,9 +150,9 @@ This equation ensures that the latent states are temporally coherent and evolve 
 <p>
 The relationship between the latent states and the recorded neural data (<em>Y<sub>k</sub></em>) is defined by the <strong>observation equation</strong>:
 </p>
-<p style="text-align: center;">
+<div style="text-align: center; margin: 20px 0;">
   <em>Y<sub>k</sub> | X<sub>k</sub> ∼ g<sub>ϕ</sub>(X<sub>k</sub>, v<sub>k</sub>), v<sub>k</sub> ∼ N(0, Q)</em>
-</p>
+</div>
 <p>
 Here:
 </p>
@@ -169,9 +168,9 @@ This equation allows the model to map latent states (<em>X<sub>k</sub></em>) to 
 <p>
 The sequence of latent states across an entire trial (<em>X<sub>0</sub>, X<sub>1</sub>, ..., X<sub>K</sub></em>) is processed by a <strong>deep neural network (DNN)</strong> to predict the trial label (<em>l</em>):
 </p>
-<p style="text-align: center;">
+<div style="text-align: center; margin: 20px 0;">
   <em>l | X<sub>0</sub>, ..., X<sub>K</sub> ∼ h<sub>ϕ</sub>(X<sub>0:K</sub>)</em>
-</p>
+</div>
 <p>
 Here:
 </p>
@@ -198,6 +197,7 @@ By combining generative (SSM) and discriminative (DNN) approaches, the model sim
   <li>Infers latent manifold structures.</li>
   <li>Decodes task-relevant information from neural recordings.</li>
 </ul>
+
 
 
 <h2>Code Structure and Documentation</h2>
