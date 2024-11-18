@@ -308,7 +308,6 @@ for iteration in range(max_iterations):
     if abs(likelihood_current - likelihood_previous) < convergence_threshold:
         break
     likelihood_previous = likelihood_current
-
 # Return optimized parameters
 Return A, B, C, D, Q, R, φ
 </pre>
