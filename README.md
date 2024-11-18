@@ -288,7 +288,6 @@ Initialize X_0, A, B, C, D, Q, R, φ (DNN parameters)
 Set convergence_threshold = ε
 Set max_iterations = N
 likelihood_previous = -inf
-
 # Begin EM iterations
 for iteration in range(max_iterations):
     # E-Step: Particle Filtering
@@ -297,16 +296,13 @@ for iteration in range(max_iterations):
             Propagate particles using SSM dynamics
             Update particle weights using observed data Y_k
         Infer latent states X_k using resampled particles
-
     # M-Step: Update Parameters
     Update transition matrices (A, B) using maximum likelihood
     Update observation matrices (C, D) using inferred states
     Recalculate process (R) and observation (Q) covariances
-
     # NN-Step: Train DNN
     Train DNN using particle-filtered latent states X_0:K
     Update φ to improve label prediction
-
     # Evaluate likelihood
     likelihood_current = Calculate full likelihood (ℒ)
     if abs(likelihood_current - likelihood_previous) < convergence_threshold:
