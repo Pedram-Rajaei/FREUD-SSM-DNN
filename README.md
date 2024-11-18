@@ -100,7 +100,7 @@ or generate outputs effectively.
 
 <div style="text-align: center; margin-top: 20px;">
   <!-- Image Section -->
-  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" style="max-width: 100%; height: 10px; border: 1px solid #ddd; border-radius: 8px;">
+  <img src="https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true" alt="Hierarchical 2D Graphical Representation" style="max-width: 600px; height: 450px; border: 1px solid #ddd; border-radius: 8px;">
   
   <!-- Legend Section -->
   <div style="text-align: center; margin-top: 15px; font-family: Arial, sans-serif; font-size: 14px;">
