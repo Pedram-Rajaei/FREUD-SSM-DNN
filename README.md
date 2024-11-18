@@ -79,11 +79,36 @@ Integrated Gradients enables feature importance analysis, highlighting significa
   </li>
 </ul>
 
-<h2>Model Architecture</h2>
+<h2>Model Definition and Methods for Learning and Inference</h2>
+<p>
 This framework is built on two fundamental components:
+</p>
+<ul>
+  <li>
+    <strong>State-Space Model (SSM):</strong> A generative model that governs the temporal evolution of the latent states <em>X<sub>k</sub></em>, capturing dynamics in a reduced-dimensional space.
+  </li>
+  <li>
+    <strong>Deep Neural Network (DNN):</strong> A predictive model that leverages the latent states for both classification and regression tasks, optimizing the manifold for accurate and interpretable predictions.
+  </li>
+</ul>
+<p>
+The integration of these components allows the model to uncover latent manifold structures, infer state dynamics, and solve predictive tasks effectively.
+</p>
+<div style="text-align: center;">
+  <!-- Image Section -->
+  <img src="/mnt/data/A_hierarchical_2D_graphical_representation_of_a_ma.png" alt="Hierarchical 2D Graphical Representation" width="600">
+  
+  <!-- Legend Section -->
+  <div style="text-align: left; margin-top: 10px; font-family: Arial, sans-serif; font-size: 14px;">
+    <strong>Legend:</strong>
+    <ul>
+      <li><span style="color: green;">Green:</span> Neural Data (<em>Y</em>) - Represents the input time-series data, such as neural recordings or EEG signals.</li>
+      <li><span style="color: orange;">Orange:</span> Latent States (<em>X</em>) - Represents the lower-dimensional manifold capturing the temporal dynamics inferred by the model.</li>
+      <li><span style="color: blue;">Blue:</span> Task Predictions (<em>L</em>) - Represents the output of the model, such as classification or regression results.</li>
+    </ul>
+  </div>
+</div>
 
-- <b>State-Space Model (SSM):</b> A generative model that governs the temporal evolution of the latent states X<sub>k</sub>, capturing dynamics in a reduced-dimensional space.
-- <b>Deep Neural Network (DNN):</b> A discriminative model that leverages the latent states to classify task-specific labels, optimizing the manifold for prediction accuracy.
 
 <h2>Mathematical Formulation</h2>
 The model operates on trial-level neural data and label sequences. Given a sequence of latent states X<sub>k</sub> and observations Y<sub>k</sub>, the evolution and observation equations are as follows:
