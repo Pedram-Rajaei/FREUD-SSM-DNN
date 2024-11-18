@@ -96,7 +96,7 @@ The integration of these components allows the model to uncover latent manifold 
 </p>
 <div style="text-align: center;">
   <!-- Image Section -->
-  <img src="/mnt/data/A_hierarchical_2D_graphical_representation_of_a_ma.png" alt="Hierarchical 2D Graphical Representation" width="600">
+  <img src="/[mnt/data/A_hierarchical_2D_graphical_representation_of_a_ma.png](https://github.com/Pedram-Rajaei/FREUD-SSM-DNN/blob/main/Images/A_clear_and_hierarchical_2D_graphical_representati.png?raw=true)" alt="Hierarchical 2D Graphical Representation" width="600">
   
   <!-- Legend Section -->
   <div style="text-align: left; margin-top: 10px; font-family: Arial, sans-serif; font-size: 14px;">
